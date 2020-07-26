@@ -3,19 +3,41 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddpostComponent } from './addpost/addpost.component';
+import { AddfriendsComponent } from './addfriends/addfriends.component';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from "./auth.guard";
+import { AuthService } from "./auth.service";
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MyfriendsComponent } from './myfriends/myfriends.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent
+    LoginComponent,
+    RegisterComponent,
+    NavbarComponent,
+    ProfileComponent,
+    AddpostComponent,
+    AddfriendsComponent,
+    HomeComponent,
+    UserProfileComponent,
+    MyfriendsComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

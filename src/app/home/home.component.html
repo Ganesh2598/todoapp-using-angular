@@ -1,0 +1,78 @@
+<div class="home-main">
+    <div class="home-container1">
+        <h6>People on Let's Mingle</h6>
+        <div class="people">
+            <div *ngFor="let people of peopleData">
+                <div class="person-image">
+                    <img src={{people.imageUrl}}/>
+                </div>
+            </div>
+        </div><br/>
+        <div class="post-container">
+            <h4 *ngIf="postData.length==0">No post yet...</h4>
+            <div *ngFor="let post of postData">
+                <div class="row">
+                    <div class="col s12 m7">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src={{post.imageUrl}}/>
+                                <span class="card-title">{{post.userName.charAt(0).toUpperCase()+post.userName.slice(1)}}</span>
+                            </div>
+                            <div class="card-content caption">
+                                <p>{{post.caption}}</p>
+                            </div>
+                            <div class="comments">
+                                <div class="display-comments">
+                                    <div *ngIf="post.Comments.length>0">
+                                        <div *ngFor="let comment of post.Comments">
+                                            <div>
+                                                <p class="sub-comment"><span>{{comment.username}} : </span>{{comment.comment}} </p>
+                                                <div class="subComments">
+                                                    <div *ngIf="comment.Childcomments.length>0">
+                                                        <div *ngFor="let subcomment of comment.Childcomments">
+                                                            <p class="subCommenst"><span>{{subcomment.username}} : </span>{{subcomment.comment}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <form class="comment-button" (submit)="addChildComment($event.target[0].value,comment.id)">
+                                                        <input type="text" placeholder="Subcomments"/>
+                                                        <button class="btn waves-effect waves-light blue btn-tiny login-button" type="submit" name="action">Post
+                                                            <i class="material-icons right">send</i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form class="comment-button" (submit)="addComment($event.target[0].value,post.id)">
+                                    <input type="text" placeholder="comments"/>
+                                    <button class="btn waves-effect waves-light blue btn-medium login-button" type="submit" name="action">Post
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="card-action">
+                               <button (click)="onSelect(post.fk_userid)">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-container2">
+            <h2>My Profile</h2>
+        <div class="profile-pic">
+            <img src={{userData.imageUrl}}/>
+        </div>
+        <br/>
+        <div class="home-container3">
+            <div class="sub-container1">
+                <span>Email</span>
+                <h6>{{userData.email}}</h6>
+                <span>User</span>
+                <h6>{{userData.name.charAt(0).toUpperCase()+userData.name.slice(1)}}</h6>
+            </div>
+        </div>
+    </div>
+</div>

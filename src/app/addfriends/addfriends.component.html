@@ -1,0 +1,14 @@
+<div class="add-friend">
+    <h4>Peoples on Let's Mingle!!!</h4>
+    <div class="friends" *ngIf="friendsData">
+        <h6 *ngIf="friendsData.length==0">No people available</h6>
+        <ul class="collection" *ngFor="let item of friendsData">
+            <li class="collection-item avatar">
+                 <img src={{item.imageUrl}} alt="" class="circle"/>
+                 <span class="title">{{item.name}}</span>
+                 <p>{{item.email}}</p>
+                 <button class="waves-effect waves-light btn secondary-content" (click)="addHandler(item.userid,item.name,item.imageUrl)">ADD</button>
+             </li>
+         </ul>
+    </div>
+</div>
